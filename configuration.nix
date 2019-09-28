@@ -48,6 +48,7 @@
     udiskie
     gwenview
     terminus_font terminus_font_ttf
+    slimThemes.previous
   ];
 
   nixpkgs.config.allowUnfree = true;
