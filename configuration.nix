@@ -45,6 +45,7 @@
     htop iotop xclip
     fluxbox
     xorg.xinit
+    udiskie
   ];
 
   nixpkgs.config.allowUnfree = true;
