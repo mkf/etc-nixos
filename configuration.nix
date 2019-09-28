@@ -47,6 +47,7 @@
     xorg.xinit
     udiskie
     gwenview
+    terminus_font terminus_font_ttf
   ];
 
   nixpkgs.config.allowUnfree = true;
