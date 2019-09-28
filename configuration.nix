@@ -87,6 +87,8 @@
   # services.xserver.displayManager.sddm.enable = true;
   services.xserver.displayManager.slim.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.windowManager.cwm.enable = true;
+  services.xserver.windowManager.fluxbox.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mf = {
