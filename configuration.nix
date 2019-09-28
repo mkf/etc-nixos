@@ -46,6 +46,7 @@
     fluxbox
     xorg.xinit
     udiskie
+    gwenview
   ];
 
   nixpkgs.config.allowUnfree = true;
