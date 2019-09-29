@@ -22,6 +22,7 @@
     consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "pl";
     defaultLocale = "pl_PL.UTF-8";
+    inputMethod.ibus.enable = true;
   };
 
   time.timeZone = "Europe/Warsaw";
@@ -29,7 +30,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget vim kakoune cwm tint2
+    wget vim kakoune tint2
+    (import (builtins.fetchTarball {
+      url = https://github.com/NixOS/nixpkgs/archive/pull/70018/head.tar.gz;
+      sha256 = "0vwfhryax9fmwqn2anqi5jxjz3ibymfrwfmz0azk8jzzrgdc6bn2";
+      }) {} ).cwm
     rxvt_unicode
     elinks links dillo netsurf.browser midori firefox
     bash zsh
@@ -48,7 +53,9 @@
     udiskie
     gwenview
     terminus_font terminus_font_ttf
-    slimThemes.previous
+    ibus ibus-engines.table ibus-engines.uniemoji ibus-qt
+    gnupg
+    rofi
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -87,9 +94,7 @@
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
 
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.slim.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.windowManager.cwm.enable = true;
   services.xserver.windowManager.fluxbox.enable = true;
