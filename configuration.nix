@@ -20,8 +20,9 @@
   boot.loader.grub.device = "/dev/sdb"; # or "nodev" for efi only
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "stunix"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "sturnix"; # Define your hostname.
+  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -39,14 +40,16 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   wget vim
-  # ];
+  environment.systemPackages = with pkgs; [
+    wget vim cwm rxvt_unicode
+    git
+    x2goclient
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  programs.mtr.enable = true;
+  programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
   # List services that you want to enable:
 
@@ -82,6 +85,7 @@
   users.users.mf = {
     isNormalUser = true;
     uid = 1000;
+    extraGroups = [ "wheel" ];
   };
 
   # This value determines the NixOS release with which your system is to be
