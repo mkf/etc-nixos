@@ -8,43 +8,61 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./cwm.nix
     ];
 
-  # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sdb"; # or "nodev" for efi only
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "sturnix"; # Define your hostname.
+
   networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
   i18n = {
     consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "pl";
     defaultLocale = "pl_PL.UTF-8";
+    inputMethod.ibus.enable = true;
   };
 
-  # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget vim cwm rxvt_unicode
-    git
+    wget vim kakoune tint2
+    (import (builtins.fetchTarball {
+      url = https://github.com/NixOS/nixpkgs/archive/pull/70018/head.tar.gz;
+      sha256 = "0vwfhryax9fmwqn2anqi5jxjz3ibymfrwfmz0azk8jzzrgdc6bn2";
+      }) {} ).cwm
+    rxvt_unicode
+    elinks links dillo netsurf.browser midori firefox
+    bash zsh
+    git git-hub
+    pass pass-otp passff-host
+    gpm
+    tree
+    xkeyboard_config
+    xscreensaver
+    ddrescue
+    spotify
+    ly
+    htop iotop xclip
+    fluxbox
+    xorg.xinit
+    udiskie
+    gwenview
+    terminus_font terminus_font_ttf
+    ibus ibus-engines.table ibus-engines.uniemoji ibus-qt
+    gnupg
+    rofi
     x2goclient
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -54,7 +72,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -63,7 +81,9 @@
   # networking.firewall.enable = false;
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
+
+  services.gpm.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -73,6 +93,7 @@
   services.xserver.enable = true;
   services.xserver.layout = "pl";
   # services.xserver.xkbOptions = "eurosign:e";
+  services.xserver.xkbOptions = "capslock:ctrl_modifier";
 
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
@@ -81,17 +102,21 @@
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
+#  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.windowManager.cwm.enable = true;
+  services.xserver.windowManager.fluxbox.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mf = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "18.09"; # Did you read the comment?
+  system.stateVersion = "19.03"; # Did you read the comment?
 
 }
