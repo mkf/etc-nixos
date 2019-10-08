@@ -60,6 +60,7 @@
     gnupg
     rofi
     x2goclient
+    openssh lsh
   ];
 
   nixpkgs.config.allowUnfree = true;
