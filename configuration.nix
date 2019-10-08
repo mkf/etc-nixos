@@ -49,7 +49,7 @@
     xscreensaver
     ddrescue
     spotify
-    ly
+#    ly
     htop iotop xclip
     fluxbox
     xorg.xinit
