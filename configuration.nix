@@ -56,6 +56,7 @@
     udiskie
     gwenview
     terminus_font terminus_font_ttf
+    xfontsel
     ibus ibus-engines.table ibus-engines.uniemoji ibus-qt
     gnupg
     rofi
