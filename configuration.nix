@@ -58,6 +58,8 @@
     rofi
     x2goclient
     openssh lsh
+    networkmanagerapplet
+    networkmanager_strongswan
   ];
 
   nixpkgs.config.allowUnfree = true;
