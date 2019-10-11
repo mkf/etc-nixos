@@ -34,10 +34,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget vim kakoune tint2
-    (import (builtins.fetchTarball {
-      url = https://github.com/NixOS/nixpkgs/archive/pull/70018/head.tar.gz;
-      sha256 = "0vwfhryax9fmwqn2anqi5jxjz3ibymfrwfmz0azk8jzzrgdc6bn2";
-      }) {} ).cwm
     rxvt_unicode
     elinks links dillo netsurf.browser midori firefox
     bash zsh
