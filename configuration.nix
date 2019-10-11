@@ -41,7 +41,6 @@
     pass pass-otp passff-host
     gpm
     tree
-    xkeyboard_config
     xscreensaver
     ddrescue
     spotify
