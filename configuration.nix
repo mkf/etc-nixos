@@ -109,7 +109,10 @@
   users.users.mf = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel" # Enable ‘sudo’ for the user.
+      "networkmanager"
+    ];
   };
 
   # This value determines the NixOS release with which your system is to be
