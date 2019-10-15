@@ -59,6 +59,7 @@
     openssh lsh
     networkmanagerapplet
     networkmanager_strongswan
+    powershell
   ];
 
   nixpkgs.config.allowUnfree = true;
