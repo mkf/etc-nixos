@@ -58,6 +58,7 @@
     openssh lsh
     strongswan
     powershell
+    xlockmore xss-lock
   ];
 
   nixpkgs.config.allowUnfree = true;
