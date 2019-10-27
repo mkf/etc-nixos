@@ -17,8 +17,8 @@
 
   networking.hostName = "sturnix"; # Define your hostname.
 
-  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = false;
 
   i18n = {
     consoleFont = "Lat2-Terminus16";
@@ -56,8 +56,7 @@
     rofi
     x2goclient
     openssh lsh
-    networkmanagerapplet
-    networkmanager_strongswan
+    strongswan
     powershell
   ];
 
