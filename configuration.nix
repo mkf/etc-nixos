@@ -40,7 +40,6 @@
     pass pass-otp passff-host
     gpm
     tree
-    xscreensaver
     ddrescue
     spotify
 #    ly
