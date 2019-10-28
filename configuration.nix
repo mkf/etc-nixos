@@ -58,6 +58,7 @@
     strongswan
     powershell
     xlockmore xss-lock
+    vscode
   ];
 
   nixpkgs.config.allowUnfree = true;
