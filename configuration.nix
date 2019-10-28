@@ -39,6 +39,7 @@
     git git-hub
     pass pass-otp passff-host
     gpm
+    acpi
     tree
     ddrescue
     spotify
