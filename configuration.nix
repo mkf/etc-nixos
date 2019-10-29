@@ -85,6 +85,8 @@
 
   services.gpm.enable = true;
 
+  hardware.acpilight.enable = true;
+
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
@@ -113,6 +115,7 @@
     extraGroups = [
       "wheel" # Enable ‘sudo’ for the user.
       "networkmanager"
+      "video"
     ];
   };
 
