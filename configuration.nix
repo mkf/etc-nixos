@@ -60,6 +60,7 @@
     powershell
     xlockmore xss-lock
     vscode
+    acpilight
   ];
 
   nixpkgs.config.allowUnfree = true;
