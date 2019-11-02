@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./cwm.nix
     ];
 
   boot.loader.grub.enable = true;
@@ -31,22 +30,17 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget vim kakoune tint2
-    (import (builtins.fetchTarball {
-      url = https://github.com/NixOS/nixpkgs/archive/pull/70018/head.tar.gz;
-      sha256 = "0vwfhryax9fmwqn2anqi5jxjz3ibymfrwfmz0azk8jzzrgdc6bn2";
-      }) {} ).cwm
     rxvt_unicode
     elinks links dillo netsurf.browser midori firefox
     bash zsh
     git git-hub
     pass pass-otp passff-host
     gpm
+    acpi
     tree
-    xkeyboard_config
-    xscreensaver
     ddrescue
     spotify
-    ly
+#    ly
     htop iotop xclip
     fluxbox
     xorg.xinit
@@ -56,6 +50,13 @@
     ibus ibus-engines.table ibus-engines.uniemoji ibus-qt
     gnupg
     rofi
+    x2goclient
+    openssh lsh
+    strongswan
+    powershell
+    xlockmore xss-lock
+    vscode
+    acpilight
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -81,6 +82,8 @@
 
   services.gpm.enable = true;
 
+  hardware.acpilight.enable = true;
+
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
@@ -103,7 +106,10 @@
   users.users.mf = {
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel" # Enable ‘sudo’ for the user.
+      "video"
+    ];
   };
 
   # This value determines the NixOS release with which your system is to be
