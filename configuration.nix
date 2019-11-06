@@ -61,6 +61,7 @@
     xlockmore xss-lock
     vscode
     acpilight
+    tdesktop
   ];
 
   nixpkgs.config.allowUnfree = true;
