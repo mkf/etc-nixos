@@ -65,6 +65,7 @@ in
     vscode
     acpilight
     tdesktop
+    bashInteractive_5
   ];
 
   environment.shells = [ bash5path ];
