@@ -3,7 +3,10 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let
+  bash5 = pkgs.bashInteractive_5;
+  bash5path = "${bash5}${bash5.shellPath}";
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -64,6 +67,8 @@
     tdesktop
   ];
 
+  environment.shells = [ bash5path ];
+
   nixpkgs.config.allowUnfree = true;
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -119,6 +124,7 @@
       "networkmanager"
       "video"
     ];
+    shell = bash5path;
   };
 
   # This value determines the NixOS release with which your system is to be
