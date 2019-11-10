@@ -37,7 +37,11 @@ in
   environment.systemPackages = with pkgs; [
     wget vim kakoune tint2
     rxvt_unicode
-    elinks links dillo netsurf.browser midori firefox
+    elinks links
+    dillo
+    (netsurf.browser.override { uilib = "gtk"; })
+    midori
+    firefox
     bash zsh
     git git-hub
     pass pass-otp passff-host
