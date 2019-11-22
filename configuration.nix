@@ -70,6 +70,7 @@ in
     acpilight
     tdesktop
     bashInteractive_5
+    mosh
   ];
 
   environment.shells = [ bash5path ];
