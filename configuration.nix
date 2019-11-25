@@ -71,6 +71,7 @@ in
     tdesktop
     bashInteractive_5
     mosh
+    discord
   ];
 
   environment.shells = [ bash5path ];
