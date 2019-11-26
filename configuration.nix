@@ -74,7 +74,7 @@ in
     bashInteractive_5
     mosh
     discord
-    aerc
+    (import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/pull/73873/head.tar.gz) {}).aerc
   ];
 
   environment.shells = [ bash5path ];
