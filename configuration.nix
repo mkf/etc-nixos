@@ -35,7 +35,8 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget vim kakoune tint2
+    wget vim tint2
+    kakoune kak-lsp
     rxvt_unicode
     elinks links
     dillo
