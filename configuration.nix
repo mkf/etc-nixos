@@ -133,6 +133,7 @@ in
       "wheel" # Enable ‘sudo’ for the user.
       "networkmanager"
       "video"
+      "audio"
     ];
     shell = bash5path;
   };
