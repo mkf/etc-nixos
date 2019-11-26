@@ -75,6 +75,13 @@ in
     mosh
     discord
     (import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/pull/73873/head.tar.gz) {}).aerc
+    scrot
+    openarena
+    android-file-transfer
+    pcmanfm
+    zathura
+    mplayer youtube-dl
+    libreoffice
   ];
 
   environment.shells = [ bash5path ];
