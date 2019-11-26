@@ -107,6 +107,7 @@ in
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+  # nixpkgs.config.pulseaudio = true; # TODO
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
