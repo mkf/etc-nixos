@@ -46,6 +46,7 @@ in
     bash zsh
     git git-hub
     pass pass-otp passff-host
+    qtpass
     gpm
     acpi
     tree
