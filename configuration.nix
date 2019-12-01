@@ -90,6 +90,8 @@ in
     tigervnc
     pavucontrol
     pandoc
+    zip
+    xarchiver
   ];
 
   environment.shells = [ bash5path ];
