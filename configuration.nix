@@ -90,7 +90,7 @@ in
     tigervnc
     pavucontrol
     pandoc
-    zip
+    zip unzip
     xarchiver
   ];
 
