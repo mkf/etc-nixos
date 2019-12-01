@@ -82,6 +82,14 @@ in
     zathura
     mplayer youtube-dl
     libreoffice
+    emacs
+    pv
+    gimp
+    neofetch
+    leafpad
+    tigervnc
+    pavucontrol
+    pandoc
   ];
 
   environment.shells = [ bash5path ];
