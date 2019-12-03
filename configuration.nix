@@ -92,6 +92,7 @@ in
     pandoc
     zip unzip
     xarchiver
+    brave
   ];
 
   environment.shells = [ bash5path ];
