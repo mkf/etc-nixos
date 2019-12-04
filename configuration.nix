@@ -93,6 +93,7 @@ in
     zip unzip
     xarchiver
     brave
+    vivaldi vivaldi-widevine vivaldi-ffmpeg-codecs
   ];
 
   environment.shells = [ bash5path ];
