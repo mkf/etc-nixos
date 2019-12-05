@@ -164,4 +164,9 @@ in
   # should.
   system.stateVersion = "19.03"; # Did you read the comment?
 
+ fileSystems."/archhome" = {
+   fsType = "xfs";
+   device = "/dev/disk/by-uuid/ad19d261-fa12-43d1-9e9e-c733ebb67440";
+   options = [ "noauto" "users" "ro" "noexec" "nodev" "nosuid" "async" ];
+ };
 }
