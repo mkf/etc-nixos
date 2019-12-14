@@ -143,6 +143,7 @@ in
 
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.windowManager.cwm.enable = true;
+  services.xserver.windowManager.fvwm.enable = true;
   services.xserver.windowManager.fluxbox.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
