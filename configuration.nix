@@ -94,6 +94,7 @@ in
     xarchiver
     brave
     vivaldi vivaldi-widevine vivaldi-ffmpeg-codecs
+    stalonetray
   ];
 
   environment.shells = [ bash5path ];
