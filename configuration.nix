@@ -95,6 +95,7 @@ in
     brave
     vivaldi vivaldi-widevine vivaldi-ffmpeg-codecs
     stalonetray
+    pulseaudio-ctl
   ];
 
   environment.shells = [ bash5path ];
