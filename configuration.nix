@@ -97,6 +97,7 @@ in
     stalonetray
     pulseaudio-ctl
     framac alt-ergo coq
+    feedreader
   ];
 
   environment.shells = [ bash5path ];
