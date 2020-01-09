@@ -24,10 +24,13 @@ in
   networking.networkmanager.enable = false;
 
   i18n = {
-    consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "pl";
     defaultLocale = "pl_PL.UTF-8";
     inputMethod.ibus.enable = true;
+  };
+
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "pl";
   };
 
   time.timeZone = "Europe/Warsaw";
