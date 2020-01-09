@@ -96,6 +96,7 @@ in
     vivaldi vivaldi-widevine vivaldi-ffmpeg-codecs
     stalonetray
     pulseaudio-ctl
+    framac alt-ergo coq
   ];
 
   environment.shells = [ bash5path ];
@@ -120,6 +121,8 @@ in
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  virtualisation.docker.enable = true;
 
   services.gpm.enable = true;
 
@@ -157,6 +160,7 @@ in
       "networkmanager"
       "video"
       "audio"
+      "docker"
     ];
     shell = bash5path;
   };
