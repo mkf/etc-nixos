@@ -71,7 +71,6 @@ in
     strongswan
     powershell
     xlockmore xss-lock
-    vscode
     acpilight
     tdesktop
     bashInteractive_5
@@ -132,9 +131,22 @@ in
 
   hardware.acpilight.enable = true;
 
+  hardware.bluetooth = {
+    enable = true;
+    extraConfig = "
+      [General]
+      Enable=Source,Sink,Media,Socket
+    ";
+  };
+  services.blueman.enable = true;
+
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+    extraModules = [ pkgs.pulseaudio-modules-bt ];
+  };
   nixpkgs.config.pulseaudio = true;
 
   # Enable the X11 windowing system.
