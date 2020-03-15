@@ -151,9 +151,10 @@ in
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.layout = "pl";
+  services.xserver.layout = "pl,pl";
+  services.xserver.xkbVariant = "qwertz,dvorak";
   # services.xserver.xkbOptions = "eurosign:e";
-  services.xserver.xkbOptions = "capslock:ctrl_modifier";
+  services.xserver.xkbOptions = "capslock:ctrl_modifier,grp:sclk_toggle";
 
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
