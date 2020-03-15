@@ -98,7 +98,6 @@ in
     vivaldi vivaldi-widevine vivaldi-ffmpeg-codecs
     stalonetray
     pulseaudio-ctl
-    framac alt-ergo coq
     feedreader
   ];
 
