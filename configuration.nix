@@ -105,6 +105,7 @@ in
   environment.shells = [ bash5path ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [ "openssl-1.0.2u" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
