@@ -76,7 +76,7 @@ in
     bashInteractive_5
     mosh
     discord
-    (import (builtins.fetchTarball https://github.com/NixOS/nixpkgs/archive/pull/73873/head.tar.gz) {}).aerc
+    aerc
     scrot
     openarena
     android-file-transfer
