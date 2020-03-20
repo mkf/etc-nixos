@@ -75,7 +75,6 @@ in
     tdesktop
     bashInteractive_5
     mosh
-    discord
     aerc
     scrot
     android-file-transfer
