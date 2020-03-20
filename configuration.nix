@@ -99,8 +99,6 @@ in
     stalonetray
     pulseaudio-ctl
     feedreader
-    steam
-#    tibia
   ];
 
   environment.shells = [ bash5path ];
