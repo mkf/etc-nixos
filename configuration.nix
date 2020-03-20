@@ -54,7 +54,6 @@ in
     acpi
     tree
     ddrescue
-    spotify
 #    ly
     htop iotop xclip
     fluxbox
