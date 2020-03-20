@@ -95,7 +95,6 @@ in
     zip unzip
     xarchiver
     brave
-    vivaldi vivaldi-widevine vivaldi-ffmpeg-codecs
     stalonetray
     pulseaudio-ctl
     feedreader
