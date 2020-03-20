@@ -99,12 +99,16 @@ in
     stalonetray
     pulseaudio-ctl
     feedreader
+    steam
+#    tibia
   ];
 
   environment.shells = [ bash5path ];
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [ "openssl-1.0.2u" ];
+
+  hardware.opengl.driSupport32Bit = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
