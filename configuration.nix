@@ -78,7 +78,6 @@ in
     discord
     aerc
     scrot
-    openarena
     android-file-transfer
     pcmanfm
     zathura
