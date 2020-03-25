@@ -95,6 +95,7 @@ in
     stalonetray
     pulseaudio-ctl
     feedreader
+    jetbrains.idea-ultimate
   ];
 
   environment.shells = [ bash5path ];
