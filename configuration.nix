@@ -96,6 +96,7 @@ in
     pulseaudio-ctl
     feedreader
     jetbrains.idea-ultimate
+    teams
   ];
 
   environment.shells = [ bash5path ];
