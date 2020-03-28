@@ -127,6 +127,11 @@ in
 
   virtualisation.docker.enable = true;
 
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableExtensionPack = true;
+  };
+
   services.gpm.enable = true;
 
   hardware.acpilight.enable = true;
@@ -178,6 +183,7 @@ in
       "video"
       "audio"
       "docker"
+      "vboxusers"
     ];
     shell = bash5path;
   };
