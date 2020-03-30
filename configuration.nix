@@ -97,6 +97,10 @@ in
     feedreader
     jetbrains.idea-ultimate
     teams
+    spice
+    win-spice
+    win-qemu
+    aqemu
   ];
 
   environment.shells = [ bash5path ];
@@ -130,6 +134,10 @@ in
   virtualisation.virtualbox.host = {
     enable = true;
     enableExtensionPack = true;
+  };
+
+  virtualisation.libvirtd = {
+    enable = true;
   };
 
   services.gpm.enable = true;
@@ -184,6 +192,7 @@ in
       "audio"
       "docker"
       "vboxusers"
+      "libvirtd"
     ];
     shell = bash5path;
   };
