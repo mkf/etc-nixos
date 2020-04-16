@@ -80,7 +80,7 @@ in
     pcmanfm
     zathura
     mplayer youtube-dl
-    libreoffice
+#    libreoffice
     emacs
     pv
     gimp
@@ -95,15 +95,15 @@ in
     stalonetray
     pulseaudio-ctl
     feedreader
-    jetbrains.idea-ultimate
+#    jetbrains.idea-ultimate
     teams
     spice
     win-spice
     win-qemu
     aqemu
-    texlive.combined.scheme-small
-    rubber
-    texworks
+#    texlive.combined.scheme-small
+#    rubber
+#    texworks
   ];
 
   environment.shells = [ bash5path ];
