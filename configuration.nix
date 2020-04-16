@@ -101,6 +101,9 @@ in
     win-spice
     win-qemu
     aqemu
+    texlive.combined.scheme-small
+    rubber
+    texworks
   ];
 
   environment.shells = [ bash5path ];
