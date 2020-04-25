@@ -183,6 +183,7 @@ in
   services.xserver.windowManager.cwm.enable = true;
   services.xserver.windowManager.fvwm.enable = true;
   services.xserver.windowManager.fluxbox.enable = true;
+  services.xserver.windowManager.awesome.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mf = {
