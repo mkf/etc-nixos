@@ -104,6 +104,7 @@ in
 #    texlive.combined.scheme-small
 #    rubber
 #    texworks
+    direnv
   ];
 
   environment.shells = [ bash5path ];
@@ -142,6 +143,8 @@ in
   virtualisation.libvirtd = {
     enable = true;
   };
+
+  services.lorri.enable = true;
 
   services.gpm.enable = true;
 
