@@ -105,12 +105,16 @@ in
 #    rubber
 #    texworks
     direnv
+    unar
   ];
 
   environment.shells = [ bash5path ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [ "openssl-1.0.2u" ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl-1.0.2u"
+    "p7zip-16.02"
+  ];
 
   hardware.opengl.driSupport32Bit = true;
 
@@ -220,5 +224,5 @@ in
    fsType = "f2fs";
    device = "/dev/disk/by-uuid/0e20551a-075f-4485-a465-f6ff743347dc";
  };
- 
+
 }
