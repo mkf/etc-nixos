@@ -106,6 +106,9 @@ in
 #    texworks
     direnv
     unar
+    zim
+    graphviz python38Packages.xdot
+    texlive.combined.scheme-medium
   ];
 
   environment.shells = [ bash5path ];
