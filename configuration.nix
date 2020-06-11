@@ -96,7 +96,7 @@ in
     stalonetray
     pulseaudio-ctl
     feedreader
-#    jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
     teams
     spice
     win-spice
