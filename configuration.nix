@@ -38,7 +38,8 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget vim tint2
+    wget tint2
+    (vim_configurable.override { python = python3; })
     kakoune kak-lsp
     rxvt_unicode
     elinks links
