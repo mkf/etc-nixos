@@ -83,7 +83,8 @@ in
     android-file-transfer
     pcmanfm
     zathura
-    mplayer youtube-dl
+#    mplayer
+    youtube-dl
 #    libreoffice
     emacs
     pv
@@ -99,8 +100,8 @@ in
     stalonetray
     pulseaudio-ctl
     feedreader
-    jetbrains.idea-ultimate
-    teams
+#    jetbrains.idea-ultimate
+#    teams
     spice
     win-spice
     win-qemu
@@ -112,7 +113,7 @@ in
     unar
     zim
     graphviz python38Packages.xdot
-    texlive.combined.scheme-medium
+#    texlive.combined.scheme-medium
   ];
 
   environment.shells = [ bash5path ];
