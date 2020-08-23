@@ -25,7 +25,10 @@ in
 
   i18n = {
     defaultLocale = "pl_PL.UTF-8";
-    inputMethod.ibus.enable = true;
+    inputMethod = {
+      enabled = "ibus";
+      ibus.engines = with pkgs.ibus-engines; [ uniemoji typing-booster ];
+    };
   };
 
   console = {
