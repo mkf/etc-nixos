@@ -47,7 +47,7 @@ in
     rxvt_unicode
     elinks links
     dillo
-    (netsurf.browser.override { uilib = "gtk"; })
+    (netsurf.browser.override { uilib = "gtk3"; })
     midori
     firefox
     bash zsh
