@@ -15,7 +15,8 @@ in
 
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sdb"; # or "nodev" for efi only
+  boot.loader.grub.device =
+    "/dev/disk/by-id/ata-LITEON_LMH-128V2M-11_MSATA_128GB_TW0G50CY550855BLB2Q1";
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "sturnix"; # Define your hostname.
@@ -225,12 +226,13 @@ in
  fileSystems."/archhome" = {
    fsType = "xfs";
    device = "/dev/disk/by-uuid/ad19d261-fa12-43d1-9e9e-c733ebb67440";
-   options = [ "noauto" "users" "rw" "noexec" "nodev" "nosuid" "async" ];
+   options = [ "noauto" "users" "ro" "noexec" "nodev" "nosuid" "async" ];
  };
 
  fileSystems."/supl" = {
    fsType = "f2fs";
    device = "/dev/disk/by-uuid/0e20551a-075f-4485-a465-f6ff743347dc";
+   options = [ "noauto" "users" "ro" "noexec" "nodev" "nosuid" "async" ];
  };
 
 }
