@@ -101,8 +101,8 @@ in
     stalonetray
     pulseaudio-ctl
     feedreader
-#    jetbrains.idea-ultimate
-#    teams
+    jetbrains.idea-ultimate
+    teams
     spice
     win-spice
     win-qemu
