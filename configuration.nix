@@ -84,7 +84,8 @@ in
     android-file-transfer
     pcmanfm
     zathura
-#    mplayer
+    mplayer
+    vlc
     youtube-dl
 #    libreoffice
     emacs
@@ -115,6 +116,23 @@ in
     zim
     graphviz python38Packages.xdot
 #    texlive.combined.scheme-medium
+    bc
+    alpine
+    chromium
+    gparted hdparm
+    guvcview
+    hugo
+    imagemagick
+    jq
+    inetutils
+    lm_sensors
+    mc
+    minetest
+    mosh
+    powertop
+    thunderbird
+    tmux
+    xorg.xev
   ];
 
   environment.shells = [ bash5path ];
