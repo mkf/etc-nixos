@@ -242,16 +242,16 @@ in
   # should.
   system.stateVersion = "19.03"; # Did you read the comment?
 
- fileSystems."/archhome" = {
-   fsType = "xfs";
-   device = "/dev/disk/by-uuid/ad19d261-fa12-43d1-9e9e-c733ebb67440";
-   options = [ "noauto" "users" "ro" "noexec" "nodev" "nosuid" "async" ];
- };
+  fileSystems."/archhome" = {
+    fsType = "xfs";
+    device = "/dev/disk/by-uuid/ad19d261-fa12-43d1-9e9e-c733ebb67440";
+    options = [ "noauto" "users" "ro" "noexec" "nodev" "nosuid" "async" ];
+  };
 
- fileSystems."/supl" = {
-   fsType = "f2fs";
-   device = "/dev/disk/by-uuid/0e20551a-075f-4485-a465-f6ff743347dc";
-   options = [ "noauto" "users" "ro" "noexec" "nodev" "nosuid" "async" ];
- };
+  fileSystems."/supl" = {
+    fsType = "f2fs";
+    device = "/dev/disk/by-uuid/0e20551a-075f-4485-a465-f6ff743347dc";
+    options = [ "noauto" "users" "ro" "noexec" "nodev" "nosuid" "async" ];
+  };
 
 }
