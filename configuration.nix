@@ -128,6 +128,7 @@ in
     lm_sensors
     mc
     minetest
+    openarena
     mosh
     powertop
     thunderbird
