@@ -53,7 +53,7 @@ in
     firefox
     bash zsh
     git git-hub
-    pass pass-otp passff-host
+    pass-otp passff-host
     qtpass
     gpm
     acpi
