@@ -215,13 +215,12 @@ in
   # services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = false;
 
-  services.xserver.displayManager.lightdm.enable = false;
+  services.xserver.displayManager.lightdm.enable = true;
   services.xserver.windowManager.cwm.enable = true;
   services.xserver.windowManager.fvwm.enable = true;
   services.xserver.windowManager.fluxbox.enable = true;
   services.xserver.windowManager.awesome.enable = true;
 
-  services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome3.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -238,6 +237,13 @@ in
       "libvirtd"
     ];
     shell = bash5path;
+  };
+
+  services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
+  hardware.nvidia.prime = {
+    sync.enable = true;
+    nvidiaBusId = "PCI:1:0:0";
+    intelBusId = "PCI:0:2:0";
   };
 
   system.stateVersion = "20.09"; # Did you read the comment?
