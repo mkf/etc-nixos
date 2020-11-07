@@ -21,7 +21,7 @@ in
   ];
 
   networking.hostName = "honey"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   i18n = {
     defaultLocale = "pl_PL.UTF-8";
