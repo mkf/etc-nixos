@@ -206,7 +206,7 @@ in
   services.xserver.layout = "pl,pl";
   services.xserver.xkbVariant = "qwertz,dvorak";
   # services.xserver.xkbOptions = "eurosign:e";
-  services.xserver.xkbOptions = "capslock:ctrl_modifier,grp:sclk_toggle";
+  services.xserver.xkbOptions = "compose:prsc,compose:lwin_altgr,ctrl:nocaps,capslock:ctrl_modifier,grp:sclk_toggle";
 
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
