@@ -73,7 +73,6 @@
     xlockmore xss-lock
     acpilight
     tdesktop
-    bashInteractive_5
     mosh
     aerc
     scrot
