@@ -90,7 +90,6 @@ in
 #    libreoffice
     emacs
     pv
-    gimp
     neofetch
     leafpad
     tigervnc
@@ -102,19 +101,17 @@ in
     stalonetray
     pulseaudio-ctl
     feedreader
-    jetbrains.idea-ultimate
     teams
-    spice
-    win-spice
-    win-qemu
-    aqemu
+#    spice
+#    win-spice
+#    win-qemu
+#    aqemu
 #    texlive.combined.scheme-small
 #    rubber
 #    texworks
     direnv
     unar
     zim
-    graphviz python38Packages.xdot
 #    texlive.combined.scheme-medium
     bc
     alpine
@@ -127,8 +124,6 @@ in
     inetutils
     lm_sensors
     mc
-    minetest
-    openarena
     mosh
     powertop
     thunderbird
@@ -172,9 +167,9 @@ in
   #  enableExtensionPack = true;
   #};
 
-  virtualisation.libvirtd = {
-    enable = true;
-  };
+#  virtualisation.libvirtd = {
+#    enable = true;
+#  };
 
   services.lorri.enable = true;
 
