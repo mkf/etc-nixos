@@ -3,10 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-let
-  bash5 = pkgs.bashInteractive_5;
-  bash5path = "${bash5}${bash5.shellPath}";
-in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -131,8 +127,6 @@ in
     xorg.xev
   ];
 
-  environment.shells = [ bash5path ];
-
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "openssl-1.0.2u"
@@ -228,7 +222,6 @@ in
       "vboxusers"
       "libvirtd"
     ];
-    shell = bash5path;
   };
 
 #  services.vsftpd = {
