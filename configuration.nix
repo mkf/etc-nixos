@@ -3,10 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-let
-  bash5 = pkgs.bashInteractive_5;
-  bash5path = "${bash5}${bash5.shellPath}";
-in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -46,101 +42,43 @@ in
   networking.interfaces.wlp2s0.useDHCP = true;
 
   environment.systemPackages = with pkgs; [
-    wget tint2
-    (vim_configurable.override { python = python3; })
-    kakoune kak-lsp
-    rxvt_unicode
-    elinks links
-    dillo
-#    (netsurf.browser.override { uilib = "gtk3"; })
-    midori
-    firefox
-    bash zsh
-    git git-hub
-    pass-otp passff-host
-    qtpass
+    wget
+    vim
+    bash
+    git
     gpm
     acpi
     tree
     ddrescue
-#    ly
-    htop iotop xclip
+    htop iotop
     fluxbox
     xorg.xinit
     udiskie
-    gwenview
-    terminus_font terminus_font_ttf
-    xfontsel
-    ibus ibus-engines.table ibus-engines.uniemoji ibus-qt
     gnupg
-    rofi
-    x2goclient
     openssh lsh
     strongswan
-    powershell
-    xlockmore xss-lock
     acpilight
-    tdesktop
-    bashInteractive_5
     mosh
-    aerc
-    scrot
-    android-file-transfer
-    pcmanfm
-    zathura
-    mplayer
-    vlc
-    youtube-dl
-#    libreoffice
-    emacs
     pv
-    gimp
     neofetch
-    leafpad
     tigervnc
-    pavucontrol
-    pandoc
     zip unzip
-    xarchiver
-    brave
-    stalonetray
-    pulseaudio-ctl
-    feedreader
-    jetbrains.idea-ultimate
-    teams
     spice
     win-spice
     win-qemu
     aqemu
-#    texlive.combined.scheme-small
-#    rubber
-#    texworks
     direnv
     unar
-    zim
-    graphviz python38Packages.xdot
-#    texlive.combined.scheme-medium
     bc
     alpine
-    chromium
     gparted hdparm
-    guvcview
-    hugo
-    imagemagick
     jq
     inetutils
     lm_sensors
     mc
-    minetest
-    openarena
-    mosh
     powertop
-    thunderbird
     tmux
-    xorg.xev
   ];
-
-  environment.shells = [ bash5path ];
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
@@ -238,7 +176,6 @@ in
       "vboxusers"
       "libvirtd"
     ];
-    shell = bash5path;
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
