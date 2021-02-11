@@ -38,92 +38,42 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget tint2
-    (vim_configurable.override { python = python3; })
-    kakoune kak-lsp
-    rxvt_unicode
-    elinks links
-    dillo
-#    (netsurf.browser.override { uilib = "gtk3"; })
-    midori
-    firefox
-    bash zsh
-    git git-hub
-    pass-otp passff-host
-    qtpass
+    wget
+    vim
+    bash
+    git
     gpm
     acpi
     tree
     ddrescue
-#    ly
-    htop iotop xclip
+    htop iotop
     fluxbox
     xorg.xinit
     udiskie
-    gwenview
-    terminus_font terminus_font_ttf
-    xfontsel
-    ibus ibus-engines.table ibus-engines.uniemoji ibus-qt
     gnupg
-    rofi
-    x2goclient
     openssh lsh
     strongswan
-    powershell
-    xlockmore xss-lock
     acpilight
-    tdesktop
     mosh
-    aerc
-    scrot
-    android-file-transfer
-    pcmanfm
-    zathura
-    mplayer
-    vlc
-    youtube-dl
-#    libreoffice
-    emacs
     pv
     neofetch
-    leafpad
     tigervnc
-    pavucontrol
-    pandoc
     zip unzip
-    xarchiver
-    brave
-    stalonetray
-    pulseaudio-ctl
-    feedreader
-    teams
 #    spice
 #    win-spice
 #    win-qemu
 #    aqemu
-#    texlive.combined.scheme-small
-#    rubber
-#    texworks
     direnv
     unar
-    zim
-#    texlive.combined.scheme-medium
     bc
     alpine
-    chromium
     gparted hdparm
-    guvcview
-    hugo
-    imagemagick
     jq
     inetutils
     lm_sensors
     mc
-    mosh
     powertop
-    thunderbird
     tmux
-    xorg.xev
   ];
 
   nixpkgs.config.allowUnfree = true;
