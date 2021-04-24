@@ -142,9 +142,9 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "pl,pl";
-  services.xserver.xkbVariant = "qwertz,dvorak";
+  services.xserver.xkbVariant = "qwertz,qwerty";
   # services.xserver.xkbOptions = "eurosign:e";
-  services.xserver.xkbOptions = "compose:prsc,compose:lwin_altgr,ctrl:nocaps,capslock:ctrl_modifier,grp:sclk_toggle";
+  services.xserver.xkbOptions = "compose:prsc,compose:lwin_altgr,ctrl:nocaps,capslock:ctrl_modifier,grp:sclk_toggle,grp:ctrl_shift_toggle";
 
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
@@ -152,6 +152,10 @@
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = false;
+
+  services.xserver.desktopManager.lxqt.enable = true;
+  services.xserver.desktopManager.cde.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
 
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.windowManager.cwm.enable = true;
@@ -175,6 +179,16 @@
       "docker"
       "vboxusers"
       "libvirtd"
+    ];
+  };
+
+  users.users.kat = {
+    isNormalUser = true;
+    uid = 1137;
+    extraGroups = [
+      "video"
+      "audio"
+      "networkmanager"
     ];
   };
 
