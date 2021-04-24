@@ -150,7 +150,7 @@
   # services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = false;
 
-  services.xserver.desktopManager.lxqt.enable = true;
+  # services.xserver.desktopManager.lxqt.enable = true;
   services.xserver.desktopManager.cde.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
 
