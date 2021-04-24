@@ -139,7 +139,7 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "pl,pl";
-  services.xserver.xkbVariant = "qwertz,qwerty";
+  services.xserver.xkbVariant = "qwertz,";
   # services.xserver.xkbOptions = "eurosign:e";
   services.xserver.xkbOptions = "compose:prsc,compose:lwin_altgr,ctrl:nocaps,capslock:ctrl_modifier,grp:sclk_toggle,grp:ctrl_shift_toggle";
 
