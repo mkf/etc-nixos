@@ -76,6 +76,20 @@
     ];
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    publish = {
+      addresses = true;
+      domain = true;
+      enable = true;
+      userServices = true;
+      workstation = true;
+      hinfo = true;
+    };
+    extraServiceFiles.ssh = "${pkgs.avahi}/etc/avahi/services/ssh.service";
+  };
+
   system.stateVersion = "20.09"; # Did you read the comment?
 
 }
