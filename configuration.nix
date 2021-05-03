@@ -188,6 +188,14 @@
     extraServiceFiles.ssh = "${pkgs.avahi}/etc/avahi/services/ssh.service";
   };
 
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    user = "mf";
+    configDir = "/home/mf/.config/syncthing";
+    dataDir = "/home/mf/.local/share/syncthing";
+  };
+
   system.stateVersion = "19.03"; # Did you read the comment?
 
   fileSystems."/chudy" = {
