@@ -213,6 +213,8 @@
     dataDir = "/home/mf/.local/share/syncthing";
   };
 
+  programs.mosh.enable = true;
+
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.prime = {
     sync.enable = true;
