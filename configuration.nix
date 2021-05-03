@@ -191,6 +191,20 @@
     shell = pkgs.fish;
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    publish = {
+      addresses = true;
+      domain = true;
+      enable = true;
+      userServices = true;
+      workstation = true;
+      hinfo = true;
+    };
+    extraServiceFiles.ssh = "${pkgs.avahi}/etc/avahi/services/ssh.service";
+  };
+
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.prime = {
     sync.enable = true;
