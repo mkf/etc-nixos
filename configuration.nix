@@ -179,6 +179,8 @@
     ];
   };
 
+  programs.fish.enable = true;
+  
   users.users.kat = {
     isNormalUser = true;
     uid = 1137;
@@ -187,6 +189,7 @@
       "audio"
       "networkmanager"
     ];
+    shell = pkgs.fish;
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
