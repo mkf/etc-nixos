@@ -49,6 +49,7 @@
     tmux
     mc
     openssh
+    vbetool
   ];
 
   programs.mtr.enable = true;
