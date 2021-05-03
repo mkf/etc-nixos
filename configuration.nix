@@ -205,6 +205,14 @@
     extraServiceFiles.ssh = "${pkgs.avahi}/etc/avahi/services/ssh.service";
   };
 
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    user = "mf";
+    configDir = "/home/mf/.config/syncthing";
+    dataDir = "/home/mf/.local/share/syncthing";
+  };
+
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.prime = {
     sync.enable = true;
