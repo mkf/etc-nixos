@@ -18,6 +18,7 @@
 
   networking.hostName = "honey"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = false;
 
   i18n = {
     defaultLocale = "pl_PL.UTF-8";
@@ -162,8 +163,6 @@
 
   services.xserver.desktopManager.gnome3.enable = true;
 
-  networking.networkmanager.enable = false;
-  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mf = {
     isNormalUser = true;
