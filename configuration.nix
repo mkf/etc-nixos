@@ -90,6 +90,8 @@
     extraServiceFiles.ssh = "${pkgs.avahi}/etc/avahi/services/ssh.service";
   };
 
+  programs.mosh.enable = true;
+
   system.stateVersion = "20.09"; # Did you read the comment?
 
 }
