@@ -92,6 +92,14 @@
 
   programs.mosh.enable = true;
 
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    user = "mf";
+    configDir = "/home/mf/.config/syncthing";
+    dataDir = "/home/mf/.local/share/syncthing";
+  };
+
   system.stateVersion = "20.09"; # Did you read the comment?
 
 }
