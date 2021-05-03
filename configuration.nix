@@ -174,10 +174,20 @@
 #    
 #  };
   
-  # This value determines the NixOS release with which your system is to be
-  # compatible, in order to avoid breaking some software such as database
-  # servers. You should change this only after NixOS release notes say you
-  # should.
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    publish = {
+      addresses = true;
+      domain = true;
+      enable = true;
+      userServices = true;
+      workstation = true;
+      hinfo = true;
+    };
+    extraServiceFiles.ssh = "${pkgs.avahi}/etc/avahi/services/ssh.service";
+  };
+
   system.stateVersion = "19.03"; # Did you read the comment?
 
   fileSystems."/chudy" = {
@@ -197,5 +207,4 @@
     device = "/dev/disk/by-uuid/0e20551a-075f-4485-a465-f6ff743347dc";
     options = [ "noauto" "users" "ro" "noexec" "nodev" "nosuid" "async" ];
   };
-
 }
