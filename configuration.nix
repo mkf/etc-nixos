@@ -60,8 +60,6 @@
     tigervnc
     zip unzip
     spice
-    win-spice
-    win-qemu
     direnv
     unar
     bc
