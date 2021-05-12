@@ -147,7 +147,6 @@
 
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.windowManager.cwm.enable = true;
-  services.xserver.windowManager.fvwm.enable = true;
   services.xserver.windowManager.fluxbox.enable = true;
   services.xserver.windowManager.awesome.enable = true;
 
