@@ -62,7 +62,6 @@
     spice
     win-spice
     win-qemu
-    aqemu
     direnv
     unar
     bc
