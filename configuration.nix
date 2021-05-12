@@ -59,10 +59,10 @@
     neofetch
     tigervnc
     zip unzip
-#    spice
-#    win-spice
-#    win-qemu
-#    aqemu
+    spice
+    win-spice
+    win-qemu
+    aqemu
     direnv
     unar
     bc
@@ -101,14 +101,14 @@
 
   virtualisation.docker.enable = true;
 
-  #virtualisation.virtualbox.host = {
-  #  enable = true;
-  #  enableExtensionPack = true;
-  #};
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableExtensionPack = true;
+  };
 
-#  virtualisation.libvirtd = {
-#    enable = true;
-#  };
+  virtualisation.libvirtd = {
+    enable = true;
+  };
 
   services.lorri.enable = true;
 
