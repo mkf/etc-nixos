@@ -7,26 +7,16 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./ibus.nix
+      ./additional-filesystems.nix
     ];
-
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device =
-    "/dev/disk/by-id/ata-LITEON_LMH-128V2M-11_MSATA_128GB_TW0G50CY550855BLB2Q1";
-  boot.loader.grub.useOSProber = true;
-
-  networking.hostName = "sturnix"; # Define your hostname.
-
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  boot.loader.grub = import ./grub.nix;
+  networking.hostName = import ./hostname.nix;
+  
+  networking.wireless.enable = true;  # Enables wpa_supplicant.
   networking.networkmanager.enable = false;
 
-  i18n = {
-    defaultLocale = "pl_PL.UTF-8";
-    inputMethod = {
-      enabled = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [ uniemoji typing-booster ];
-    };
-  };
+  i18n.defaultLocale = "pl_PL.UTF-8";
 
   console = {
     font = "Lat2-Terminus16";
@@ -35,44 +25,8 @@
 
   time.timeZone = "Europe/Warsaw";
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    wget
-    vim
-    bash
-    git
-    gpm
-    acpi
-    tree
-    ddrescue
-    htop iotop
-    fluxbox
-    xorg.xinit
-    udiskie
-    gnupg
-    openssh lsh
-    strongswan
-    acpilight
-    mosh
-    pv
-    neofetch
-    tigervnc
-    zip unzip
-    spice
-    direnv
-    unar
-    bc
-    alpine
-    gparted hdparm
-    jq
-    inetutils
-    lm_sensors
-    mc
-    powertop
-    tmux
-  ];
-
+  environment.systemPackages = import ./envsyspackages.nix pkgs;
+  
   nixpkgs.config.allowUnfree = true;
 
   hardware.opengl.driSupport32Bit = true;
@@ -82,19 +36,9 @@
   programs.mtr.enable = true;
   programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
-  # List services that you want to enable:
+  services.openssh.enable = true; # enable OpenSSH daemon
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing.enable = true; # enable CUPS
 
   virtualisation.docker.enable = true;
 
@@ -128,25 +72,41 @@
   };
   nixpkgs.config.pulseaudio = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "pl,pl";
-  services.xserver.xkbVariant = "qwertz,dvorak";
-  # services.xserver.xkbOptions = "eurosign:e";
-  services.xserver.xkbOptions = "capslock:ctrl_modifier,grp:sclk_toggle";
+  services.xserver = {
+    enable = true;
 
-  # Enable touchpad support.
-  services.xserver.libinput.enable = true;
+    layout = "pl,pl";
+    xkbVariant = "qwertz,dvorak";
+    xkbOptions = "caps:ctrl_modifier,grp:sclk_toggle,compose:menu";
+    # consider: eurosign:e , caps:super
+      
+    libinput.enable = true; # Enable touchpad support.
 
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = false;
+    displayManager = {
+      lightdm.enable = true; # consider: sddm
+      sessionCommands = ''
+        xset m 3/2 16 &
+      '';
+    };
+    
+    desktopManager.plasma5.enable = false;
+    windowManager = {
+      cwm.enable = true;
+      fluxbox.enable = true;
+      awesome.enable = true;
+    };
+  };
 
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.windowManager.cwm.enable = true;
-  services.xserver.windowManager.fluxbox.enable = true;
-  services.xserver.windowManager.awesome.enable = true;
-
+  systemd.user.services.pasystray = {
+    enable = true;
+    wantedBy = [
+      "multi-user.target"
+      "graphical-session.target"
+    ];
+    description = "pasystray";
+    script = "${pkgs.pasystray}/bin/pasystray";
+  };  
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mf = {
     isNormalUser = true;
@@ -193,22 +153,4 @@
   };
 
   system.stateVersion = "19.03"; # Did you read the comment?
-
-  fileSystems."/chudy" = {
-    fsType = "ext4";
-    device = "/dev/disk/by-uuid/6cb49a46-e8f6-47fd-af3e-c1a4f043fe68";
-    options = [ "noauto" "users" "rw" "noexec" "nodev" "nosuid" "async" ];
-  };
-  
-  fileSystems."/archhome" = {
-    fsType = "xfs";
-    device = "/dev/disk/by-uuid/ad19d261-fa12-43d1-9e9e-c733ebb67440";
-    options = [ "noauto" "users" "ro" "noexec" "nodev" "nosuid" "async" ];
-  };
-
-  fileSystems."/supl" = {
-    fsType = "f2fs";
-    device = "/dev/disk/by-uuid/0e20551a-075f-4485-a465-f6ff743347dc";
-    options = [ "noauto" "users" "ro" "noexec" "nodev" "nosuid" "async" ];
-  };
 }
