@@ -1,4 +1,4 @@
-with import <nixpkgs> {};
+with import <nixpkgs> { };
 
 # vim_configurable.customize {
 #     # Specifies the vim binary name.

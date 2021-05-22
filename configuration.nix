@@ -2,18 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./ibus.nix
-      ./additional-filesystems.nix
-    ];
+{ config, pkgs, ... }: {
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./ibus.nix
+    ./additional-filesystems.nix
+  ];
   boot.loader.grub = import ./grub.nix;
   networking.hostName = import ./hostname.nix;
-  
-  networking.wireless.enable = true;  # Enables wpa_supplicant.
+
+  networking.wireless.enable = true; # Enables wpa_supplicant.
   networking.networkmanager.enable = false;
 
   i18n.defaultLocale = "pl_PL.UTF-8";
@@ -26,7 +24,7 @@
   time.timeZone = "Europe/Warsaw";
 
   environment.systemPackages = import ./envsyspackages.nix pkgs;
-  
+
   nixpkgs.config.allowUnfree = true;
 
   hardware.opengl.driSupport32Bit = true;
@@ -34,7 +32,10 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.mtr.enable = true;
-  programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   services.openssh.enable = true; # enable OpenSSH daemon
 
@@ -42,14 +43,12 @@
 
   virtualisation.docker.enable = true;
 
-#  virtualisation.virtualbox.host = {
-#    enable = true;
-#    enableExtensionPack = true;
-#  };
+  #  virtualisation.virtualbox.host = {
+  #    enable = true;
+  #    enableExtensionPack = true;
+  #  };
 
-  virtualisation.libvirtd = {
-    enable = true;
-  };
+  virtualisation.libvirtd = { enable = true; };
 
   services.lorri.enable = true;
 
@@ -79,7 +78,7 @@
     xkbVariant = "qwertz,dvorak";
     xkbOptions = "caps:ctrl_modifier,grp:sclk_toggle,compose:menu";
     # consider: eurosign:e , caps:super
-      
+
     libinput.enable = true; # Enable touchpad support.
 
     displayManager = {
@@ -88,7 +87,7 @@
         xset m 3/2 16 &
       '';
     };
-    
+
     desktopManager.plasma5.enable = false;
     windowManager = {
       cwm.enable = true;
@@ -99,14 +98,11 @@
 
   systemd.user.services.pasystray = {
     enable = true;
-    wantedBy = [
-      "multi-user.target"
-      "graphical-session.target"
-    ];
+    wantedBy = [ "multi-user.target" "graphical-session.target" ];
     description = "pasystray";
     script = "${pkgs.pasystray}/bin/pasystray";
-  };  
-  
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mf = {
     isNormalUser = true;
@@ -122,14 +118,14 @@
     ];
   };
 
-#  services.vsftpd = {
-#    enable = true;
-#    anonymousUser = true;
-#    anonymousUploadEnable = true;
-#    anonymousMkdirEnable = true;
-#    
-#  };
-  
+  #  services.vsftpd = {
+  #    enable = true;
+  #    anonymousUser = true;
+  #    anonymousUploadEnable = true;
+  #    anonymousMkdirEnable = true;
+  #    
+  #  };
+
   services.avahi = {
     enable = true;
     nssmdns = true;

@@ -1,4 +1,5 @@
-pkgs: with pkgs; [
+pkgs:
+with pkgs; [
   wget
   vim
   bash
@@ -7,25 +8,29 @@ pkgs: with pkgs; [
   acpi
   tree
   ddrescue
-  htop iotop
+  htop
+  iotop
   fluxbox
   xorg.xinit
   udiskie
   gnupg
-  openssh lsh
+  openssh
+  lsh
   strongswan
   acpilight
   mosh
   pv
   neofetch
   tigervnc
-  zip unzip
+  zip
+  unzip
   spice
   direnv
   unar
   bc
   alpine
-  gparted hdparm
+  gparted
+  hdparm
   jq
   inetutils
   lm_sensors
