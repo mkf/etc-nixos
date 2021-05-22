@@ -37,6 +37,8 @@
     enableSSHSupport = true;
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
   services.openssh.enable = true; # enable OpenSSH daemon
 
   services.printing.enable = true; # enable CUPS
