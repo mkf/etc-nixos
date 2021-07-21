@@ -40,6 +40,8 @@
     enableSSHSupport = true;
   };
 
+  programs.browserpass.enable = true;
+
   services.gnome.gnome-keyring.enable = true;
 
   services.openssh.enable = true; # enable OpenSSH daemon
@@ -60,6 +62,8 @@
   services.gpm.enable = true;
 
   hardware.acpilight.enable = true;
+
+  services.acpid.enable = true;
 
   hardware.bluetooth = {
     enable = true;
@@ -94,6 +98,7 @@
     };
 
     desktopManager.plasma5.enable = false;
+    desktopManager.enlightenment.enable = true;
     windowManager = {
       cwm.enable = true;
       fluxbox.enable = true;
@@ -128,7 +133,7 @@
   #    anonymousUser = true;
   #    anonymousUploadEnable = true;
   #    anonymousMkdirEnable = true;
-  #    
+  #
   #  };
 
   services.avahi = {

@@ -21,7 +21,6 @@ with pkgs; [
   mosh
   pv
   neofetch
-  tigervnc
   zip
   unzip
   spice
