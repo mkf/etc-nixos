@@ -107,7 +107,7 @@
   };
 
   systemd.user.services.pasystray = {
-    enable = true;
+    enable = false;
     wantedBy = [ "multi-user.target" "graphical-session.target" ];
     description = "pasystray";
     script = "${pkgs.pasystray}/bin/pasystray";
