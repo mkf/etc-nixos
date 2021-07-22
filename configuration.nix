@@ -51,7 +51,7 @@
 
   programs.browserpass.enable = true;
 
-  services.gnome.gnome-keyring.enable = true;
+  services.gnome3.gnome-keyring.enable = true;
 
   # List services that you want to enable:
 
