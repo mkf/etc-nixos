@@ -132,6 +132,7 @@
       fluxbox.enable = true;
       awesome.enable = true;
     };
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mf = {
