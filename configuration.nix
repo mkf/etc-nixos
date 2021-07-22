@@ -81,7 +81,7 @@
 
   hardware.acpilight.enable = true;
 
-  hardware.acpid.enable = true;
+  services.acpid.enable = true;
 
   hardware.bluetooth = {
     enable = true;
