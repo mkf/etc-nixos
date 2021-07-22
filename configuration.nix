@@ -2,31 +2,23 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./ibus.nix
     ];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.devices = [
-    "/dev/disk/by-id/ata-120GB_SSD_1605250040004"
-    "/dev/disk/by-id/ata-Samsung_SSD_840_PRO_Series_S12RNEAD205690L"
-  ];
-
-  networking.hostName = "honey"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  boot.loader.grub = import ./grub.nix;
+  networking.hostName = import ./hostname.nix;
+  networking.wireless = {
+    enable = true;
+    interfaces = ["wlp2s0"]; # https://github.com/NixOS/nixpkgs/issues/101963
+  };  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = false;
 
-  i18n = {
-    defaultLocale = "pl_PL.UTF-8";
-    inputMethod = {
-      enabled = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [ uniemoji typing-booster ];
-    };
-  };
+  i18n.defaultLocale = "pl_PL.UTF-8";
 
   console = {
     font = "Lat2-Terminus16";
@@ -42,44 +34,7 @@
   networking.interfaces.enp3s0.useDHCP = true;
   networking.interfaces.wlp2s0.useDHCP = true;
 
-  environment.systemPackages = with pkgs; [
-    wget
-    vim
-    bash
-    git
-    gpm
-    acpi
-    tree
-    ddrescue
-    htop iotop
-    fluxbox
-    xorg.xinit
-    udiskie
-    gnupg
-    openssh lsh
-    strongswan
-    acpilight
-    mosh
-    pv
-    neofetch
-    tigervnc
-    zip unzip
-    spice
-    win-spice
-    win-qemu
-    aqemu
-    direnv
-    unar
-    bc
-    alpine
-    gparted hdparm
-    jq
-    inetutils
-    lm_sensors
-    mc
-    powertop
-    tmux
-  ];
+  environment.systemPackages = import ./envsyspackages.nix pkgs;
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
@@ -93,6 +48,10 @@
   # started in user sessions.
   programs.mtr.enable = true;
   programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+
+  programs.browserpass.enable = true;
+
+  services.gnome.gnome-keyring.enable = true;
 
   # List services that you want to enable:
 
@@ -122,6 +81,8 @@
 
   hardware.acpilight.enable = true;
 
+  hardware.acpid.enable = true;
+
   hardware.bluetooth = {
     enable = true;
     config.General.Enable = "Source,Sink,Media,Socket";
@@ -138,30 +99,39 @@
   nixpkgs.config.pulseaudio = true;
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "pl,pl";
-  services.xserver.xkbVariant = "qwertz,";
-  # services.xserver.xkbOptions = "eurosign:e";
-  services.xserver.xkbOptions = "compose:prsc,compose:lwin_altgr,ctrl:nocaps,capslock:ctrl_modifier,grp:sclk_toggle,grp:ctrl_shift_toggle";
+  services.xserver = {
+    enable = true;
+    layout = "pl,pl";
+    xkbVariant = "qwertz,";
+    xkbOptions = lib.concatStringsSep "," [
+      "compose:prsc"
+      "compose:lwin_altgr"
+      "ctrl:nocaps"
+      "capslock:ctrl_modifier"
+      "grp:sclk_toggle"
+      "grp:ctrl_shift_toggle"
+      # "eurosign:e"
+    ];
+    libinput.enable = true;
 
-  # Enable touchpad support.
-  services.xserver.libinput.enable = true;
+    displayManager.sddm.enable = true; # Enable the KDE Desktop Environment.
+    displayManager.lightdm.enable = true;
 
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = false;
+    desktopManager = {
+      plasma5.enable = false;
+      # lxqt.enable = true;
+      cde.enable = true;
+      xfce.enable = true;
 
-  # services.xserver.desktopManager.lxqt.enable = true;
-  services.xserver.desktopManager.cde.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
+      gnome3.enable = true;
+    };
 
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.windowManager.cwm.enable = true;
-  services.xserver.windowManager.fvwm.enable = true;
-  services.xserver.windowManager.fluxbox.enable = true;
-  services.xserver.windowManager.awesome.enable = true;
-
-  services.xserver.desktopManager.gnome3.enable = true;
+    windowManager = {
+      cwm.enable = true;
+      fvwm.enable = true;
+      fluxbox.enable = true;
+      awesome.enable = true;
+    };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mf = {
