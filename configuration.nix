@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./ibus.nix
@@ -31,6 +31,16 @@
   nixpkgs.config.allowUnfree = true;
 
   hardware.opengl.driSupport32Bit = true;
+
+  powerManagement.cpuFreqGovernor = "schedutil";
+  services.tlp = {
+    enable = true;
+    settings = {
+      USB_WHITELIST = lib.concatStringsSep " " [ # enable autosuspend
+        "046d:c52b" # my Logitech Unifying for T620
+      ];
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
