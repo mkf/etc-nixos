@@ -114,7 +114,7 @@
     ];
     libinput.enable = true;
 
-    displayManager.sddm.enable = true; # Enable the KDE Desktop Environment.
+    displayManager.sddm.enable = false; # Enable the KDE Desktop Environment.
     displayManager.lightdm.enable = true;
 
     desktopManager = {
