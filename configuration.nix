@@ -158,6 +158,7 @@
       "video"
       "audio"
       "networkmanager"
+      "docker"
     ];
     shell = pkgs.fish;
   };
