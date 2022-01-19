@@ -92,9 +92,7 @@
 
   services.xserver = {
     enable = true;
-
-    layout = "pl,pl";
-    xkbVariant = "qwertz,dvorak";
+    layout = "pl";
     xkbOptions = lib.concatStringsSep "," [
       "compose:menu"
       "caps:ctrl_modifier"
