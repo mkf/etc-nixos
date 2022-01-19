@@ -13,7 +13,7 @@
   boot.loader.grub = import ./grub.nix;
   networking.hostName = import ./hostname.nix;
   networking.wireless = {
-    enable = true; # Enables wpa_supplicant
+    enable = true; # Enables wpa_supplicant.
     interfaces = ["wlp2s0"]; # https://github.com/NixOS/nixpkgs/issues/101963
   };
   networking.networkmanager.enable = false;
