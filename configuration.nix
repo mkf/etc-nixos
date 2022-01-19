@@ -49,23 +49,14 @@
 
   services.gnome.gnome-keyring.enable = true;
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  services.openssh.enable = true; # enable OpenSSH daemon
 
   virtualisation.docker.enable = true;
 
-  #virtualisation.virtualbox.host = {
-  #  enable = true;
-  #  enableExtensionPack = true;
-  #};
+  #  virtualisation.virtualbox.host = {
+  #    enable = true;
+  #    enableExtensionPack = true;
+  #  };
 
   virtualisation.libvirtd = {
     enable = true;
