@@ -88,8 +88,7 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    layout = "pl,pl";
-    xkbVariant = "qwertz,";
+    layout = "pl";
     xkbOptions = lib.concatStringsSep "," [
       "compose:prsc"
       "compose:lwin_altgr"
