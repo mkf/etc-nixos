@@ -95,9 +95,13 @@
 
     layout = "pl,pl";
     xkbVariant = "qwertz,dvorak";
-    xkbOptions = "caps:ctrl_modifier,grp:sclk_toggle,compose:menu";
-    # consider: eurosign:e , caps:super
-
+    xkbOptions = lib.concatStringsSep "," [
+      "compose:menu"
+      "caps:ctrl_modifier"
+      "grp:sclk_toggle"
+      # "eurosign:e"
+      # "caps:super"
+    ];
     libinput.enable = true; # Enable touchpad support.
 
     displayManager = {
