@@ -13,9 +13,9 @@
   boot.loader.grub = import ./grub.nix;
   networking.hostName = import ./hostname.nix;
   networking.wireless = {
-    enable = true;
+    enable = true; # Enables wpa_supplicant
     interfaces = ["wlp2s0"]; # https://github.com/NixOS/nixpkgs/issues/101963
-  };  # Enables wireless support via wpa_supplicant.
+  };
   networking.networkmanager.enable = false;
 
   i18n.defaultLocale = "pl_PL.UTF-8";
