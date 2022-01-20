@@ -13,9 +13,9 @@
   boot.loader.grub = import ./grub.nix;
   networking.hostName = import ./hostname.nix;
   networking.wireless = {
-    enable = true;
+    enable = true; # Enables wpa_supplicant.
     interfaces = ["wlp2s0"]; # https://github.com/NixOS/nixpkgs/issues/101963
-  };  # Enables wireless support via wpa_supplicant.
+  };
   networking.networkmanager.enable = false;
 
   i18n.defaultLocale = "pl_PL.UTF-8";
@@ -37,10 +37,6 @@
   environment.systemPackages = import ./envsyspackages.nix pkgs;
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "openssl-1.0.2u"
-    "p7zip-16.02"
-  ];
 
   hardware.opengl.driSupport32Bit = true;
 
@@ -51,25 +47,16 @@
 
   programs.browserpass.enable = true;
 
-  services.gnome3.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  services.openssh.enable = true; # enable OpenSSH daemon
 
   virtualisation.docker.enable = true;
 
-  #virtualisation.virtualbox.host = {
-  #  enable = true;
-  #  enableExtensionPack = true;
-  #};
+  #  virtualisation.virtualbox.host = {
+  #    enable = true;
+  #    enableExtensionPack = true;
+  #  };
 
   virtualisation.libvirtd = {
     enable = true;
@@ -101,8 +88,7 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    layout = "pl,pl";
-    xkbVariant = "qwertz,";
+    layout = "pl";
     xkbOptions = lib.concatStringsSep "," [
       "compose:prsc"
       "compose:lwin_altgr"
