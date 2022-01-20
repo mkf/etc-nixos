@@ -24,7 +24,7 @@ with pkgs; [
   spice
   win-spice
   win-qemu
-  aqemu
+  # aqemu
   direnv
   unar
   bc
