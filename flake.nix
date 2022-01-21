@@ -48,7 +48,7 @@
         modules = [
           (overlay-unstable-module)
           ./configuration.nix
-          ./additional-filesystems.nix
+          ./sturnix-additional-filesystems.nix
           ({config, pkgs, ... }: {
             services.xserver.displayManager.sessionCommands = ''
               xset m 3/2 16 &
