@@ -187,25 +187,26 @@
 
   programs.mosh.enable = true;
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.prime = {
-    sync.enable = true;
-    nvidiaBusId = "PCI:1:0:0";
-    intelBusId = "PCI:0:2:0";
-  };
-
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
-
-  boot = {
-    extraModprobeConfig = "options nvidia-drm modeset=1";
-
-    initrd.kernelModules = [
-      "nvidia"
-      "nvidia_modeset"
-      "nvidia_uvm"
-      "nvidia_drm"
-    ];
-  };
+  # services.xserver.videoDrivers = [ "nvidia" ];
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+  # hardware.nvidia.prime = {
+  #   sync.enable = true;
+  #   nvidiaBusId = "PCI:1:0:0";
+  #   intelBusId = "PCI:0:2:0";
+  # };
+  #
+  # boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+  #
+  # boot = {
+  #   extraModprobeConfig = "options nvidia-drm modeset=1";
+  #
+  #   initrd.kernelModules = [
+  #     "nvidia"
+  #     "nvidia_modeset"
+  #     "nvidia_uvm"
+  #     "nvidia_drm"
+  #   ];
+  # };
 
   services.xserver.dpi = 128;
 
