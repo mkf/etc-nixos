@@ -36,7 +36,7 @@
             device =
               "/dev/disk/by-id/ata-LITEON_LMH-128V2M-11_MSATA_128GB_TW0G50CY550855BLB2Q1";
             useOSProber = true;
-}
+          };
           xkbopt = [
             "compose:menu"
             "caps:ctrl_modifier"
@@ -76,7 +76,7 @@
               "/dev/disk/by-id/ata-120GB_SSD_1605250040004"
               "/dev/disk/by-id/ata-Samsung_SSD_840_PRO_Series_S12RNEAD205690L"
             ];
-}
+          };
           xkbopt = [
             "compose:prsc"
             "compose:lwin_altgr"
