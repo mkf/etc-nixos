@@ -19,11 +19,10 @@ with pkgs; [
   mosh
   pv
   neofetch
-  tigervnc
   zip unzip
   spice
-  win-spice
-  win-qemu
+#   win-spice
+#   win-qemu
   # aqemu
   direnv
   unar

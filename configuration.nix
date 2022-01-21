@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, hostname, wlan, grub, xkbopt, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -15,11 +15,11 @@
     experimental-features = nix-command flakes
   '';
 
-  boot.loader.grub = import ./grub.nix;
-  networking.hostName = import ./hostname.nix;
+  boot.loader.grub = grub;
+  networking.hostName = hostname;
   networking.wireless = {
     enable = true; # Enables wpa_supplicant.
-    interfaces = ["wlp2s0"]; # https://github.com/NixOS/nixpkgs/issues/101963
+    interfaces = [wlan]; # https://github.com/NixOS/nixpkgs/issues/101963
   };
   networking.networkmanager.enable = false;
 
@@ -32,18 +32,21 @@
 
   time.timeZone = "Europe/Warsaw";
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp3s0.useDHCP = true;
-  networking.interfaces.wlp2s0.useDHCP = true;
-
   environment.systemPackages = import ./envsyspackages.nix pkgs;
 
   nixpkgs.config.allowUnfree = true;
 
   hardware.opengl.driSupport32Bit = true;
+  
+  # powerManagement.cpuFreqGovernor = "schedutil";
+  services.tlp = {
+    enable = true;
+    settings = {
+      USB_WHITELIST = lib.concatStringsSep " " [ # enable autosuspend
+        "046d:c52b" # my Logitech Unifying for T620
+      ];
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -55,6 +58,8 @@
   services.gnome.gnome-keyring.enable = true;
 
   services.openssh.enable = true; # enable OpenSSH daemon
+
+  # services.printing.enable = true; # enable CUPS
 
   virtualisation.docker.enable = true;
 
@@ -94,23 +99,15 @@
   services.xserver = {
     enable = true;
     layout = "pl";
-    xkbOptions = lib.concatStringsSep "," [
-      "compose:prsc"
-      "compose:lwin_altgr"
-      "ctrl:nocaps"
-      "capslock:ctrl_modifier"
-      "grp:sclk_toggle"
-      "grp:ctrl_shift_toggle"
-      # "eurosign:e"
-    ];
+    xkbOptions = lib.concatStringsSep "," xkbopt;
     libinput.enable = true;
 
-    displayManager.sddm.enable = false; # Enable the KDE Desktop Environment.
     displayManager.lightdm.enable = true;
 
     desktopManager = {
       plasma5.enable = false;
       # lxqt.enable = true;
+      enlightenment.enable = true;
       cde.enable = true;
       xfce.enable = true;
 
@@ -141,32 +138,6 @@
   };
 
   programs.fish.enable = true;
-  
-  users.users.kat = {
-    isNormalUser = true;
-    uid = 1137;
-    extraGroups = [
-      "video"
-      "audio"
-      "networkmanager"
-      "docker"
-    ];
-    shell = pkgs.fish;
-  };
-
-  users.users.riir = {
-    isNormalUser = true;
-    uid = 1138;
-    extraGroups = [
-      "video"
-      "audio"
-      "networkmanager"
-      "docker"
-      "wheel"
-    ];
-    shell = pkgs.zsh;
-  };
-
 
   services.avahi = {
     enable = true;
@@ -192,6 +163,8 @@
 
   programs.mosh.enable = true;
 
+  # ##### for honey:
+  # 
   # services.xserver.videoDrivers = [ "nvidia" ];
   # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   # hardware.nvidia.prime = {
@@ -212,8 +185,4 @@
   #     "nvidia_drm"
   #   ];
   # };
-
-  services.xserver.dpi = 128;
-
-  system.stateVersion = "20.09"; # Did you read the comment?
 }
