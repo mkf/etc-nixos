@@ -47,6 +47,9 @@
       ];
     };
   };
+  # To let TLP be:
+  # https://discourse.nixos.org/t/cant-enable-tlp-when-upgrading-to-21-05/13435/2
+  services.power-profiles-daemon.enable = false;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
