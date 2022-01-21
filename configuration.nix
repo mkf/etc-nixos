@@ -10,7 +10,7 @@
       ./ibus.nix
     ];
 
-  nix.package = pkgs.unstable.nix_2_4;
+  nix.package = pkgs.nix_2_4;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
