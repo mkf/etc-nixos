@@ -114,7 +114,7 @@
       cde.enable = true;
       xfce.enable = true;
 
-      gnome3.enable = true;
+      gnome.enable = true;
     };
 
     windowManager = {
