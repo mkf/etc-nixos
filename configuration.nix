@@ -10,7 +10,7 @@
       ./ibus.nix
     ];
 
-  nix.package = pkgs.nix_2_4;
+  nix.package = pkgs.unstable.nix_2_4;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
@@ -52,7 +52,7 @@
 
   programs.browserpass.enable = true;
 
-  services.gnome.gnome-keyring.enable = true;
+  services.gnome3.gnome-keyring.enable = true;
 
   services.openssh.enable = true; # enable OpenSSH daemon
 
