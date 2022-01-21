@@ -139,7 +139,21 @@
       "libvirtd"
     ];
   };
+  
+  users.users.riir = {
+    isNormalUser = true;
+    uid = 1138;
+    extraGroups = [
+      "video"
+      "audio"
+      "networkmanager"
+      "docker"
+      "wheel"
+    ];
+    shell = pkgs.zsh;
+  };
 
+  programs.zsh.enable = true;
   programs.fish.enable = true;
 
   services.avahi = {

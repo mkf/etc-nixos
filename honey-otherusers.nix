@@ -10,17 +10,4 @@
     ];
     shell = pkgs.fish;
   };
-
-  users.users.riir = {
-    isNormalUser = true;
-    uid = 1138;
-    extraGroups = [
-      "video"
-      "audio"
-      "networkmanager"
-      "docker"
-      "wheel"
-    ];
-    shell = pkgs.zsh;
-  };
 }
