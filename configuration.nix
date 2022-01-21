@@ -11,6 +11,11 @@
   boot.loader.grub = import ./grub.nix;
   networking.hostName = import ./hostname.nix;
 
+  nix.package = pkgs.nix_2_4;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
   networking.wireless = {
     enable = true; # Enables wpa_supplicant.
     interfaces = ["wlp3s0"]; # https://github.com/NixOS/nixpkgs/issues/101963
