@@ -138,6 +138,20 @@
     ];
   };
 
+  users.users.riir = {
+    isNormalUser = true;
+    uid = 1138;
+    extraGroups = [
+      "wheel" # Enable ‘sudo’ for the user.
+      "networkmanager"
+      "video"
+      "audio"
+    ];
+    shell = pkgs.zsh;
+  };
+
+  programs.zsh.enable = true;
+
   #  services.vsftpd = {
   #    enable = true;
   #    anonymousUser = true;
