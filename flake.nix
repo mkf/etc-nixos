@@ -29,7 +29,7 @@
           };
           swap = [ {
             device = "/dev/disk/by-uuid/95c244ac-5d2b-4065-b04f-42cc85b8f0ad";
-          }; ];
+          } ];
           grub = {
             enable = true;
             version = 2;
@@ -68,7 +68,7 @@
           };
           swap = [ {
             device = "/dev/disk/by-uuid/84ef289c-42b9-4609-a3a7-4afbd583d801";
-          }; ];
+          } ];
           grub = {
             enable = true;
             version = 2;
