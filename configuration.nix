@@ -10,6 +10,11 @@
       ./ibus.nix
     ];
 
+  nix.package = pkgs.nix_2_4;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
   boot.loader.grub = import ./grub.nix;
   networking.hostName = import ./hostname.nix;
   networking.wireless = {
