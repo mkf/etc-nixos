@@ -14,6 +14,13 @@
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/disk/by-id/ata-TOSHIBA_MK8009GAH_3799WGE8W";
   boot.loader.grub.useOSProber = true;
+  boot.loader.grub.extraEntries = ''
+    menuentry "Haiku" {
+      set root=(hd0,3);
+      chainloader +1
+    }
+  '';
+  boot.loader.grub.extraEntriesBeforeNixOS = true;
 
   networking.hostName = "szumik"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
